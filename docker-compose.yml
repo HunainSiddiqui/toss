@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./mainbackend
+      dockerfile: DockerFile
+    ports:
+      - "4000:4000"
+    depends_on:
+      - redis
+    environment:
+      - JWT_SECRET=dbcjhsdBHBXBAUT7PUYGYUQS2REAWW@@EB#VE
+      - JWT_EXPIRE=5d
+      - COOKIE_EXPIRE=5
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
+  websocket:
+    build:
+      context: ./websocket
+      dockerfile: DockerFile
+    ports:
+      - "3001:3001"
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
+  worker:
+    build:
+      context: ./worker
+      dockerfile: Dockerfile
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
