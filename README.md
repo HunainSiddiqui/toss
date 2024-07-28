@@ -31,25 +31,25 @@ Once a user signs up or logs into the system, the following functionalities are 
 - **Description:** Allows a user to sign up by providing a username, password, and email in the request body.
 
 ### 2. User Login
-- **Endpoint:** `api/login`
+- **Endpoint:** `/api/login`
 - **Method:** `POST`
 - **Description:** Allows a user to log in by providing a username and password in the request body. Returns an access token for authenticated requests and Store it in a cookie.
 
 ### 3. Create/Update Alert
-- **Endpoint:** `api/alerts/create`
+- **Endpoint:** `/api/alerts/create`
 - **Method:** `POST`
 - **Authorization:** Bearer Token (JWT)
 - **Description:** Creates or updates an alert for a user. Requires a valid JWT token. The request body should contain information about the coin and target price.
 
 ### 4. Delete Alert (Mark as Deleted)
-- **Endpoint:** `/alerts/delete/:id`
+- **Endpoint:** `/api/alerts/delete/:id`
 - **Method:** `DELETE`
 - **Authorization:** Bearer Token (JWT)
 - **Description:** Marks an alert as deleted. Requires a valid JWT token and the ID of the alert to be deleted.
 
 
 ### 5. Get User Alerts
-- **Endpoint:** `/alerts`
+- **Endpoint:** `/api/alerts`
 - **Method:** `GET`
 - **Authorization:** Bearer Token (JWT)
 - **Description:** Fetches alerts for the authenticated user. Supports pagination and optional status filtering.
@@ -114,7 +114,7 @@ These apis were successfully tested using postman during development process. Th
 
 ### 3. Create/Update Alert
 
-- **Endpoint:** `/alerts/create`
+- **Endpoint:** `/api/alerts/create`
 - **Method:** `POST`
 - **Authorization:** Bearer Token (JWT)
 - **Description:** Creates or updates an alert for a specific cryptocurrency.
@@ -143,7 +143,7 @@ These apis were successfully tested using postman during development process. Th
 
 ### 5. Delete Alert
 
-- **Endpoint:** `/alerts/delete/real/<int:alert_id>`
+- **Endpoint:** `/api/alerts/delete/<int:alert_id>`
 - **Method:** `DELETE`
 - **Authorization:** Bearer Token (JWT)
 - **Description:** Deletes an alert from the database.
@@ -156,7 +156,7 @@ These apis were successfully tested using postman during development process. Th
 
 ### 6. Get User Alerts
 
-- **Endpoint:** `/alerts`
+- **Endpoint:** `/api/alerts`
 - **Method:** `GET`
 - **Authorization:** Bearer Token (JWT)
 - **Description:** Fetches user alerts with optional filtering and pagination.
